@@ -1,0 +1,11 @@
+<template>
+  <require from="components/todo/Todo"></require>
+
+  <h2>Todo list:</h2>
+  <div repeat.for="todo of todos">
+    <todo id.bind="todo.id"
+          text.bind="todo.text" 
+          completed.bind="todo.completed">
+    </todo>
+  </div>
+</template>
