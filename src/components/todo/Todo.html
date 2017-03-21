@@ -1,3 +1,4 @@
 <template>
-  <p>${text}</p>
+  <p style.bind="styles.todo">${text}</p>
+  <button click.delegate="toggleCompleted()">Toggle Completed</button>
 </template>
