@@ -1,4 +1,8 @@
 <template>
-  <p style.bind="styles.todo">${text}</p>
-  <button click.delegate="toggleCompleted()">Toggle Completed</button>
+  <div style.bind="styles.container">
+    <p style.bind="styles.todo">${text}</p>
+    <div style.bind="styles.buttonContainer">
+      <button style.bind="styles.button" click.delegate="toggleCompleted()">Toggle Completed</button>    
+    </div>
+  </div>
 </template>

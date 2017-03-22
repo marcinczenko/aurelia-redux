@@ -1,19 +1,23 @@
 <template>
   <require from="components/todo/Todo"></require>
 
-  <h2>Todo list:</h2>
-  <div if.bind="!props.todos || props.todos.length === 0">
-    Please add some todos and have fun!
+  <div style.bind="styles.container">
+    <h2>Todo list:</h2>
+    <div if.bind="!props.todos || props.todos.length === 0">
+      Please add some todos and have fun!
+    </div>
+    <div style.bind="styles.todoList" repeat.for="todo of props.todos">
+      <todo id.bind="todo.id"
+            text.bind="todo.text" 
+            completed.bind="todo.completed"
+            toggle.bind="props.todoToggle">
+      </todo>
+    </div>
+    <form submit.trigger="addTodo()">
+      <div style.bind="styles.inputGroup">
+        <input type="text" value.bind="todoText">
+        <button style.bind="styles.button" disabled.bind="buttonDisabled" type="submit">Add Todo</button>
+      </div>
+    </form>
   </div>
-  <div repeat.for="todo of props.todos">
-    <todo id.bind="todo.id"
-          text.bind="todo.text" 
-          completed.bind="todo.completed"
-          toggle.bind="props.todoToggle">
-    </todo>
-  </div>
-  <form submit.trigger="addTodo()">
-    <input type="text" value.bind="todoText">
-    <button type="submit">Add Todo</button>
-  </form>
 </template>
