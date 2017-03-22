@@ -2,10 +2,11 @@
   <require from="components/todo/Todo"></require>
 
   <h2>Todo list:</h2>
-  <div repeat.for="todo of todos">
+  <div repeat.for="todo of props.todos">
     <todo id.bind="todo.id"
           text.bind="todo.text" 
-          completed.bind="todo.completed">
+          completed.bind="todo.completed"
+          toggle.bind="props.todoToggle">
     </todo>
   </div>
 </template>

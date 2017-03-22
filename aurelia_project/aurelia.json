@@ -131,6 +131,16 @@
             "path": "../node_modules/aurelia-testing/dist/amd",
             "main": "aurelia-testing",
             "env": "dev"
+          },
+          {
+            "name": "redux",
+            "path": "../node_modules/redux/dist",
+            "main": "redux"
+          },
+          {
+            "name": "@reactivex/rxjs",
+            "path": "../node_modules/@reactivex/rxjs/dist/cjs",
+            "main": "Rx"
           }
         ]
       }

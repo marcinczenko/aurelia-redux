@@ -4,6 +4,7 @@ export class Todo {
     @bindable id;
     @bindable text;
     @bindable completed;
+    @bindable toggle;
 
     constructor() {
       this.styles = styles;
@@ -12,8 +13,11 @@ export class Todo {
     toggleCompleted() {
       console.log('toggleCompleted');
 
-      this.completed = !this.completed;
+      this.toggle(this.id);
+    }
 
+    completedChanged() {
+      console.log('completedChanged');
       this.updateStyle();
     }
 
