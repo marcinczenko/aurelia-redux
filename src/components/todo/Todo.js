@@ -1,30 +1,30 @@
 import { bindable } from 'aurelia-framework';
 
 export class Todo {
-    @bindable id;
-    @bindable text;
-    @bindable completed;
-    @bindable toggle;
+  @bindable id;
+  @bindable text;
+  @bindable completed;
+  @bindable toggle;
 
-    constructor() {
-      this.styles = styles;
-    }
+  constructor() {
+    this.styles = styles;
+  }
 
-    toggleCompleted() {
-      this.toggle(this.id);
-    }
+  toggleCompleted() {
+    this.toggle(this.id);
+  }
 
-    completedChanged() {
-      this.updateStyle();
-    }
+  completedChanged() {
+    this.updateStyle();
+  }
 
-    updateStyle() {
-      if (this.completed) {
-        this.styles = {...styles, todo: {...styles.todoCompleted} };
-      } else {
-        this.styles = {...styles, todo: {...styles.todoNotCompleted} };
-      }
+  updateStyle() {
+    if (this.completed) {
+      this.styles = {...styles, todo: {...styles.todoCompleted} };
+    } else {
+      this.styles = {...styles, todo: {...styles.todoNotCompleted} };
     }
+  }
 }
 
 const styles = {
@@ -49,6 +49,5 @@ const styles = {
   todoNotCompleted: {
     flex: 1,
     'text-decoration': 'none'
-  },
-
+  }
 };
