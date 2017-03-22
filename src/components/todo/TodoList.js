@@ -15,7 +15,6 @@ export class TodoList {
   }
 
   todoTextChanged() {
-    console.log('this.todoText.trim().lenght', this.todoText.trim().length)
     if (this.todoText.trim().length === 0) {
       this.buttonDisabled = 'disabled';
     } else {

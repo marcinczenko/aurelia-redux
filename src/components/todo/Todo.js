@@ -11,21 +11,18 @@ export class Todo {
     }
 
     toggleCompleted() {
-      console.log('toggleCompleted');
-
       this.toggle(this.id);
     }
 
     completedChanged() {
-      console.log('completedChanged');
       this.updateStyle();
     }
 
     updateStyle() {
       if (this.completed) {
-        this.styles = Object.assign({}, styles, { todo: {...styles.todoCompleted} });
+        this.styles = {...styles, todo: {...styles.todoCompleted} };
       } else {
-        this.styles = Object.assign({}, styles, { todo: {...styles.todoNotCompleted} });
+        this.styles = {...styles, todo: {...styles.todoNotCompleted} };
       }
     }
 }

@@ -11,10 +11,10 @@ class TodoListContainerProps extends AureliaProps {
   mapDispatchToProps() {
     return {
       todoToggle: (id) => {
-        this.applicationStateCoordinator.dispatch(this.actionCreators.todoToggle(id));
+        this.dispatch(this.actionCreators.todoToggle(id));
       },
       todoAdd: (id, text) => {
-        this.applicationStateCoordinator.dispatch(this.actionCreators.todoAdd(id, text));
+        this.dispatch(this.actionCreators.todoAdd(id, text));
       }
     };
   }
@@ -24,5 +24,9 @@ class TodoListContainerProps extends AureliaProps {
 export class TodoListContainer {
   constructor(props) {
     this.props = props;
+  }
+
+  detached() {
+    this.props.unsubscribe();
   }
 }
