@@ -24,11 +24,5 @@ class TodoListContainerProps extends AureliaProps {
 export class TodoListContainer {
   constructor(props) {
     this.props = props;
-    console.log('props=', this.props);
-
-    setTimeout( () => {
-      this.props.todoAdd(1, 'Clean up your desk');
-      this.props.todoAdd(2, 'Transfer money to Wilma');
-    }, 3000);
   }
 }
