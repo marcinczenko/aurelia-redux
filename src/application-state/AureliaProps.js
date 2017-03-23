@@ -11,9 +11,13 @@ export class AureliaProps {
     this.observable = this.applicationStateCoordinator.observable((state) => {
         return this.mapStateToProps(state);
     });
-    this.observable.subscribe((props) => {
+    this.subscription = this.observable.subscribe((props) => {
       Object.assign(this, props);
     });
     Object.assign(this, this.mapDispatchToProps());
+  }
+
+  unsubscribe() {
+    this.subscription.unsubscribe();
   }
 }

@@ -40,6 +40,8 @@ I will use a short paragraph from the [ember-redux](http://www.ember-redux.com/d
 The data source is the application state - the one and only one source of truth for the whole app.
 The picture below illustrates the idea:
 
+![data-down, actions-up](images/DataDown-ActionsUp.png)
+
 ### Using Redux with Aurelia
 
 Our way of integrating Redux with Aurelia is inspired by [react-redux](https://github.com/reactjs/react-redux) - the official React bindings for Redux. react-redux takes the burden of creating the container components away using their [connect](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) function, here we will try to do something similar - in Aurelia world having React on the horizon.
@@ -284,7 +286,6 @@ If you read the code above, you notice that there is no single mention of Redux.
       }
     }
 
-
 In order to declare which part of the state our container component is interested in, all what is needed is a class with two required methods (inspired by [react-redux](https://github.com/reactjs/react-redux)): `mapStateToProps` and `mapDispatchToProps`. First represents the _data down_ pattern, the second _actions up_. The _Props_ class (as we will call it from now on), extends the AureliaProps class where the magic happens:
 
     import {inject} from 'aurelia-framework';
@@ -300,7 +301,7 @@ In order to declare which part of the state our container component is intereste
         this.observable = this.applicationStateCoordinator.observable((state) => {
             return this.mapStateToProps(state);
         });
-        this.observable.subscribe((props) => {
+        this.subscription = this.observable.subscribe((props) => {
           Object.assign(this, props);
         });
         Object.assign(this, this.mapDispatchToProps());
@@ -311,9 +312,10 @@ In order to declare which part of the state our container component is intereste
       }
 
       unsubscribe() {
-        this.observable.unsubscribe();
+        this.subscription.unsubscribe();
       }
     }
+
 
 
 The AureliaProps class does two things:
